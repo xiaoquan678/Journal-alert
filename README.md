@@ -1,3 +1,16 @@
+# 植物—植食性昆虫互作文献日报
+
+本仓库基于 [pkui1mpression-design/Journal-alert](https://github.com/pkui1mpression-design/Journal-alert)，已改为个人植物—植食性昆虫互作研究配置，林业害虫优先，兼顾农业害虫。
+
+- 已配置7本起步期刊、研究关键词和昆虫背景筛选；最多展示10篇。
+- 主动推送默认关闭。每日生成的阅读报在 `reports/` 目录。
+- 在 **Actions → journal-alert daily → Run workflow** 首次运行，建议 days 填 `14`。
+- 原工作流计划北京时间07:30运行，实际可能延迟；Fork后需在Actions页面启用。
+- 关键词评分不是机制证据质量评估；尚无微信小程序界面或自动中文翻译。
+- 详细个性化说明见 [PERSONAL_SETUP.md](PERSONAL_SETUP.md)。下方为上游原始说明，其中的大气方向示例不代表本仓库配置。
+
+---
+
 # 大气环境文献日报（journal-alert）
 
 把「期刊定期推送」变成**按关键词筛选后的微信推送 + 本地 Markdown 每日阅读报**，全自动、每天定时运行。

@@ -384,6 +384,7 @@ def run(args: argparse.Namespace) -> int:
         cfg.get("keywords", []),
         cfg.get("exclude_terms", []),
         cfg.get("exclude_doi_prefixes", []),
+        cfg.get("required_any_terms", []),
     )
     min_score = int(tiers.get("min_score", 3))
 

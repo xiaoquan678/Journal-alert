@@ -44,7 +44,8 @@ class Scored:
 
 
 class Scorer:
-    def __init__(self, keywords: list[dict], exclude_terms: list[str], exclude_doi_prefixes: list[str]):
+    def __init__(self, keywords: list[dict], exclude_terms: list[str], exclude_doi_prefixes: list[str], required_any_terms: list[str] | None = None):
+        self.required_any = [_pattern(t) for t in (required_any_terms or []) if t.strip()]
         self.groups = []
         for entry in keywords:
             label = entry.get("label") or entry.get("term") or "keyword"
@@ -68,6 +69,11 @@ class Scorer:
                 return result
 
         haystack = f"{title} {abstract}"
+        if self.required_any and not any(p.search(haystack) for p in self.required_any):
+            result.excluded = True
+            result.exclude_term = "missing insect context"
+            return result
+
         for term, pattern in self.excludes:
             if pattern.search(haystack):
                 result.excluded = True
